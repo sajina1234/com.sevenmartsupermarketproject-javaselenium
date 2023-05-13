@@ -2,11 +2,16 @@ package com.sevenmartsupermarket.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.sevenmartsupermarket.base.Base;
+import com.sevenmartsupermarket.base.Data_Provider;
+import com.sevenmartsupermarket.constants.Constants;
 import com.sevenmartsupermarket.pages.LoginPage;
 import com.sevenmartsupermarket.utilities.ExcelReader;
+
+
 
 public class LoginTest extends Base {
 	LoginPage loginpage;
@@ -17,8 +22,7 @@ public class LoginTest extends Base {
 		loginpage = new LoginPage(driver);
 		loginpage.loginUtility();
 		String actualLogoText = loginpage.getLogoText();
-		String expectedLogoText = "7rmart supermarket";
-		Assert.assertEquals(actualLogoText, expectedLogoText);
+		Assert.assertEquals(actualLogoText, Constants.EXPECTED_LOGO_TEXT);
 
 	}
 
@@ -26,11 +30,18 @@ public class LoginTest extends Base {
 	public void verifyLoginFunctionality() {
 		loginpage = new LoginPage(driver);
 		loginpage.loginUtility();
-		String expectedProfileName = "Admin";
 		String actualProfileName = loginpage.getProfileText();
-		Assert.assertEquals(actualProfileName, expectedProfileName);
+		Assert.assertEquals(actualProfileName, Constants.EXPECTED_PROFILE_NAME);
 	}
 
+	@Test(dataProvider = "Logindata",dataProviderClass = Data_Provider.class)
+	public void verifyInvalidLogin(String username,String passwrd) {
+		loginpage = new LoginPage(driver);
+		loginpage.loginUtility(username, passwrd);
+		String actualErrorMessage = loginpage.getErrorMessage();
+		Assert.assertEquals(actualErrorMessage, Constants.EXPECTED_INVALIDLOGIN_ERROR_MESSAGE);
+
+	}
 	@Test
 	public void verifyInvalidLoginErrorMessage() {
 		loginpage = new LoginPage(driver);
@@ -39,12 +50,11 @@ public class LoginTest extends Base {
 		String userName=excelreader.getCellData(0, 0);
 		String password=excelreader.getCellData(0, 1);
 		loginpage.loginUtility(userName, password);
-		//loginpage.loginUtility("avbshj", "dffhjg");
 		String actualErrorMessage = loginpage.getErrorMessage();
-		String expectedErrorMessage = "Alert!";
-		Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+		Assert.assertEquals(actualErrorMessage,Constants.EXPECTED_ERROR_MESSAGE);
 
 	}
+
 
 	@Test
 	public void verifyRememberCheckBox() {

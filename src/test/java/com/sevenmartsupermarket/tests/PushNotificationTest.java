@@ -11,7 +11,7 @@ public class PushNotificationTest extends Base{
 	LoginPage loginpage;
 	PushNotificationPage pushnotificationpage;
 	ExcelReader excelreader=new ExcelReader();
-@Test
+@Test(groups = "regression")
 public void verifyPushNotification() {
 	loginpage=new LoginPage(driver);
 	pushnotificationpage=new PushNotificationPage(driver);

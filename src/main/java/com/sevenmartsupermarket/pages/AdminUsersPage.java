@@ -15,7 +15,7 @@ public class AdminUsersPage {
 	private WebElement adminUsers;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
 	private WebElement newButton;
-	@FindBy(xpath = "//input[@id='username']")
+	@FindBy(xpath = "//input[@class='form-control' and @placeholder='Username']")
 	private WebElement userNameElement;
 	@FindBy(xpath = "//input[@id='password']")
 	private WebElement passwordElement;
@@ -33,6 +33,12 @@ private WebElement searchUserNameElement;
 private WebElement searchField;
 @FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr[1]/td[1]")
 private WebElement searchResult;
+@FindBy(xpath = "//a[@class='nav-link' and @data-toggle='dropdown']")
+private WebElement adminRight;
+@FindBy(xpath = "//a[@class='dropdown-item']//following::i[@class='ace-icon fa fa-power-off']")
+private WebElement logoutElement;
+@FindBy(xpath = "//a[@class='d-block']")
+private WebElement adminLeft;
 	public AdminUsersPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -78,5 +84,12 @@ private WebElement searchResult;
 		searchField.click();
 		return searchResult.getText();
 		
+	}
+	public void adminLogOut() {
+		adminRight.click();
+		logoutElement.click();
+	}
+	public String getAdminUserText() {
+		return adminLeft.getText();
 	}
 }

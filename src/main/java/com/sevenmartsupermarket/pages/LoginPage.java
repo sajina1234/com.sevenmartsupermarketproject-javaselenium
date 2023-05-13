@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -16,8 +17,10 @@ public class LoginPage {
 	Properties properties = new Properties();
 	FileInputStream fileinputstream;
 	GeneralUtility generalutility;
+	@CacheLookup
 	@FindBy(xpath = "//input[@name='username']")
 	private WebElement userNameElement;
+	@CacheLookup
 	@FindBy(xpath = "//input[@name='password']")
 	private WebElement passwordElement;
 	@FindBy(xpath = "//button[contains(text(),'Sign In')]")
@@ -30,8 +33,7 @@ public class LoginPage {
 	private WebElement invalidLoginErrorMessage;
 	@FindBy(xpath = "//span[@class='brand-text font-weight-light']")
 	private WebElement sevenMartLogo;
-
-	public LoginPage(WebDriver driver) {
+   public LoginPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		try {

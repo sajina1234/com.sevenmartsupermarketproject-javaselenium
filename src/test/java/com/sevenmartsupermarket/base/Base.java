@@ -12,6 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import com.sevenmartsupermarket.constants.Constants;
 import com.sevenmartsupermarket.utilities.ScreenShot;
@@ -52,13 +53,19 @@ ScreenShot screenshot=new ScreenShot();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 	}
-
-	@BeforeMethod
-	public void launchBrowser() {
-		String browser=properties.getProperty("browser");
+@Parameters("browser")
+	@BeforeMethod(enabled=false,alwaysRun=true)
+	public void launchBrowser(String browser) {
+		
 		String url=properties.getProperty("url");
 		intialize(browser,url);
 	}
+@BeforeMethod(enabled=true ,alwaysRun=true)
+public void launchBrowser() {
+	String browser=properties.getProperty("browser");
+	String url=properties.getProperty("url");
+	intialize(browser,url);
+}
 	@AfterMethod
 	public void terminateBrowser(ITestResult itest) {
 		if(itest.getStatus()==ITestResult.FAILURE) {
