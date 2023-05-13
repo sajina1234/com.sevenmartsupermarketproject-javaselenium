@@ -30,7 +30,7 @@ public void verifyAdminUsers() {
 	String actualAlertMessage=adminuserspage.getSuccessAlertMessage();
 	Assert.assertEquals(actualAlertMessage, Constants.EXPECTED_ALERT_MESSAGE);
 }
-@Test(groups = "Smoke")
+@Test
 public void verifySearch() {
 	adminuserspage=new AdminUsersPage(driver);
 	loginpage=new LoginPage(driver);
