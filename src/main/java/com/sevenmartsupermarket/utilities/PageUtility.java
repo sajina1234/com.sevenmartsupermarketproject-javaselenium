@@ -1,10 +1,14 @@
 package com.sevenmartsupermarket.utilities;
 
+import java.io.File;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+
+import com.sevenmartsupermarket.constants.Constants;
 
 public class PageUtility {
 	WebDriver driver;
@@ -15,6 +19,7 @@ public class PageUtility {
 
 	/**
 	 * method to select element by index
+	 * 
 	 * @param index
 	 * @param element
 	 */
@@ -25,6 +30,7 @@ public class PageUtility {
 
 	/**
 	 * method to select element by value
+	 * 
 	 * @param value
 	 * @param element
 	 */
@@ -35,6 +41,7 @@ public class PageUtility {
 
 	/**
 	 * method to select element by visible text
+	 * 
 	 * @param text
 	 * @param element
 	 */
@@ -45,6 +52,7 @@ public class PageUtility {
 
 	/**
 	 * method to mouse over the element
+	 * 
 	 * @param element
 	 */
 	public void action_MoveToElement(WebElement element) {
@@ -54,6 +62,7 @@ public class PageUtility {
 
 	/**
 	 * method to double click the element
+	 * 
 	 * @param element
 	 */
 	public void action_DoubleClick(WebElement element) {
@@ -63,6 +72,7 @@ public class PageUtility {
 
 	/**
 	 * method to drag and drop the element
+	 * 
 	 * @param source
 	 * @param target
 	 */
@@ -70,77 +80,105 @@ public class PageUtility {
 		Actions action = new Actions(driver);
 		action.dragAndDrop(source, target).build().perform();
 	}
+
 	/**
 	 * method to right click the element
+	 * 
 	 * @param element
 	 */
 	public void action_RightClick(WebElement element) {
 		Actions action = new Actions(driver);
 		action.contextClick(element).build().perform();
 	}
+
 	/**
 	 * method to scroll into element
+	 * 
 	 * @param element
 	 */
 	public void scroll_into_view(WebElement element) {
-		JavascriptExecutor js=(JavascriptExecutor) driver;
-		js.executeScript("arguments[0].scrollIntoView();",element);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView();", element);
 	}
+
 	/**
 	 * method to click element by using javascriptexecutor
+	 * 
 	 * @param element
 	 */
 	public void click_JavascriptExecutor(WebElement element) {
-		JavascriptExecutor js=(JavascriptExecutor) driver;
-		js.executeScript("arguments[0].click();",element);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", element);
 	}
+
 	/**
 	 * method to accept alert
 	 */
 	public void alert_Accept() {
 		driver.switchTo().alert().accept();
 	}
+
 	/**
 	 * method for dismiss alert
 	 */
 	public void alert_Dismiss() {
 		driver.switchTo().alert().dismiss();
 	}
+
 	/**
 	 * method to get alertmessage
+	 * 
 	 * @return
 	 */
 	public String get_AlertMessage() {
-		String alerttext=driver.switchTo().alert().getText();
+		String alerttext = driver.switchTo().alert().getText();
 		return alerttext;
 	}
+
 	/**
 	 * method to send alerttext
+	 * 
 	 * @param value
 	 */
 	public void sendAlertText(String value) {
 		driver.switchTo().alert().sendKeys(value);
-		}
+	}
+
 	public void scrollAndClick(WebElement element) {
-		JavascriptExecutor js=(JavascriptExecutor) driver;
-		int x=0;
-		while(!is_clicked(element)) {
-			js.executeScript("window.scrollBy(0,"+x+")");
-			x=x+20;
-			
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		int x = 0;
+		while (!is_clicked(element)) {
+			js.executeScript("window.scrollBy(0," + x + ")");
+			x = x + 20;
+
 		}
-		
-		}
-		
-	
+
+	}
+
 	public boolean is_clicked(WebElement element) {
 		try {
 			element.click();
 			return true;
-			
+
 		} catch (Exception e) {
 			return false;
 		}
-		
+
 	}
+
+	/**
+	 * method for file uploading
+	 * @param element
+	 * @param fileName
+	 */
+	public void fileUpload(WebElement element, String fileName) {
+		try {
+			File fileupload = new File(Constants.IMAGE_DIRECTORY + fileName);
+			element.sendKeys(fileupload.getAbsolutePath());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

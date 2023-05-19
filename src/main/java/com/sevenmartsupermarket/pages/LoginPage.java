@@ -31,8 +31,7 @@ public class LoginPage {
 	private WebElement profileName;
 	@FindBy(xpath = "//h5[text()=' Alert!']")
 	private WebElement invalidLoginErrorMessage;
-	@FindBy(xpath = "//span[@class='brand-text font-weight-light']")
-	private WebElement sevenMartLogo;
+	
    public LoginPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -129,12 +128,5 @@ public class LoginPage {
 		return generalutility.get_textOfElement(profileName);
 
 	}
-	/**
-	 * method for get text of sevenmart logo
-	 * @return
-	 */
-	public String getLogoText() {
-		generalutility = new GeneralUtility(driver);
-		return generalutility.get_textOfElement(sevenMartLogo);
-	}
+	
 }

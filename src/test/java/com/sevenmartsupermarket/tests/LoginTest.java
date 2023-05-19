@@ -17,14 +17,7 @@ public class LoginTest extends Base {
 	LoginPage loginpage;
 	ExcelReader excelreader;
 
-	@Test
-	public void verifyLogo() {
-		loginpage = new LoginPage(driver);
-		loginpage.loginUtility();
-		String actualLogoText = loginpage.getLogoText();
-		Assert.assertEquals(actualLogoText, Constants.EXPECTED_LOGO_TEXT);
-
-	}
+	
 
 	@Test
 	public void verifyLoginFunctionality() {
@@ -56,7 +49,7 @@ public class LoginTest extends Base {
 	}
 
 
-	@Test
+	@Test(groups = "smoke")
 	public void verifyRememberCheckBox() {
 		loginpage = new LoginPage(driver);
 		boolean actualResult = loginpage.is_RememberCheckBoxDisplayed();

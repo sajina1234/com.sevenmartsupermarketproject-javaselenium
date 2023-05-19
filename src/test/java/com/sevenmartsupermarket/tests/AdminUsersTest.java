@@ -30,24 +30,27 @@ public void verifyAdminUsers() {
 	String actualAlertMessage=adminuserspage.getSuccessAlertMessage();
 	Assert.assertEquals(actualAlertMessage, Constants.EXPECTED_ALERT_MESSAGE);
 }
-@Test
-public void verifySearch() {
+@Test(groups = "smoke")
+public void verifyUserSearch() {
 	adminuserspage=new AdminUsersPage(driver);
 	loginpage=new LoginPage(driver);
 	loginpage.loginUtility();
 	adminuserspage.clickOnAdminUsers();
-	String actualSearchResult=adminuserspage.searchUsers();
+	adminuserspage.clickSearchButton();
+	adminuserspage.inputSearchUsers("pf");
+	adminuserspage.clickSearchElement();
+	String actualSearchResult=adminuserspage.getSearchresult();
 	Assert.assertEquals(actualSearchResult, Constants.EXPECTED_SEARCH_RESULT);
-	}
-@Test
-public void verifyAdminUserName() {
+     }
+@Test(dataProvider = "AdminUsers creation data", dataProviderClass = Data_Provider.class)
+public void verifyAdminUserName(String userName,String password) {
 	adminuserspage=new AdminUsersPage(driver);
 	loginpage=new LoginPage(driver);
 	loginpage.loginUtility();
 	adminuserspage.adminLogOut();
-	loginpage.loginUtility("sajina11_05_2023_08_07_58", "admin");
-	String actualUserText=adminuserspage.getAdminUserText();
-	String expectedUserText=" Sajina11_05_2023_08_07_58";
-	Assert.assertEquals(actualUserText, expectedUserText);
+	loginpage=new LoginPage(driver);
+	loginpage.loginUtility(userName,password);
+	boolean actualUserText=adminuserspage.getAdminUserText(userName);
+	Assert.assertTrue(actualUserText);
 }
 }

@@ -21,4 +21,21 @@ public class Data_Provider {
 				{ "DeliveryBoy1", "deliveryBoy1@test.com", "679597", "Address1",
 						"Deliveryboy1234", "paswrd" } };
 	}
+	@DataProvider(name = "AdminUsers creation data")
+	public Object[][] DataProviderAdminUsersCreation() {
+		return new Object[][] {{"Carlo","a3bnfoivwz7"},{"Erica","dbxeuwa0l6z"}};
+	}
+	@DataProvider(name="ManagePage creation data")
+	public Object[][] DataProviderManagePageData()
+	{
+	excelreader.setExcelFile("managepage","pagedata");
+	Object data[][]=excelreader.getMultidimentionalData(2,4);
+	return data;
+	}
+	@DataProvider(name = "pageslider creation data")
+	public Object[][] DataProviderPageSliderCreation() {
+		return new Object[][] {{"slideimage.jpg","https:\\sevemmart.com"},
+			{"Beautiful.jpg","https:\\grocery.com"},
+			{"slideimage.jpg","https://grocerysevenmart.com"}};
+	}
 }

@@ -1,5 +1,6 @@
 package com.sevenmartsupermarket.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.sevenmartsupermarket.base.Base;
@@ -11,7 +12,7 @@ public class PushNotificationTest extends Base{
 	LoginPage loginpage;
 	PushNotificationPage pushnotificationpage;
 	ExcelReader excelreader=new ExcelReader();
-@Test(groups = "regression")
+@Test(groups = "Smoke")
 public void verifyPushNotification() {
 	loginpage=new LoginPage(driver);
 	pushnotificationpage=new PushNotificationPage(driver);
@@ -19,9 +20,8 @@ public void verifyPushNotification() {
 	pushnotificationpage.clickPushNotification();
 	excelreader.setExcelFile("pushnotificationdata","notificationdata");
 	String title=excelreader.getCellData(0, 0);
-	System.out.println(title);
-	excelreader.setExcelFile("logindata","invalidlogincredentials");
-	String username=excelreader.getCellData(0, 0);
-	System.out.println(username);
+	String description=excelreader.getCellData(0, 1);
+	pushnotificationpage.createPushNotification(title, description);
+	Assert.assertTrue(pushnotificationpage.checkSuccessAlertIsDisplayed());
 }
 }

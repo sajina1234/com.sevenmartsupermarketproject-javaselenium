@@ -1,6 +1,8 @@
 package com.sevenmartsupermarket.utilities;
 
 import java.io.File;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -109,8 +111,31 @@ public class GeneralUtility {
 		element.sendKeys(fileupload.getAbsolutePath());
 		
 	}
+	/**
+	 * method  to get time stamp
+	 * @return
+	 */
 	public static String getTimeStamp() {
 		return new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(new Date());
 	}
-	
+	/**
+	 * method to get response code 
+	 * @param url
+	 * @return
+	 */
+	public int getResponseStatusCode(String url) {
+		int responseCode=0;
+		HttpURLConnection huc = null;
+		try {
+			huc = (HttpURLConnection)(new URL(url).openConnection());
+			huc.setRequestMethod("HEAD");
+
+			huc.connect();
+			responseCode=huc.getResponseCode();
+		
+		} catch (Exception e) {
+		
+		}
+		return responseCode;
+	}
 }

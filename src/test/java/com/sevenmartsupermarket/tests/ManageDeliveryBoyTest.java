@@ -23,12 +23,11 @@ public class ManageDeliveryBoyTest extends Base {
 		loginpage.loginUtility();
 		managedeliveryboypage.clickManageDeliveryBoy();
 		String Name = "sajina"+ GeneralUtility.getTimeStamp();
-		managedeliveryboypage.addNewDeliveryBoy(Name, "saj@123", "6345278765", Name, "saji", "45637");
+		managedeliveryboypage.addNewDeliveryBoy(Name, "saj@123", "6345278765", Name, "rose", "45637");
 		managedeliveryboypage.clickSaveButton();
 		boolean actualAlertText = managedeliveryboypage.getResultText();
-		Assert.assertEquals(actualAlertText, true);
-
-	}
+		Assert.assertTrue(actualAlertText);
+           }
 	@Test(dataProvider = "DeliveryBoy creation data", dataProviderClass = Data_Provider.class)
 	public void verifyDeliveryBoyWithDataProvider(String Name,String mailId,String phone,String Adress,String UserName,String Passwrd) {
 		loginpage = new LoginPage(driver);
@@ -39,7 +38,7 @@ public class ManageDeliveryBoyTest extends Base {
 		managedeliveryboypage.addNewDeliveryBoy(Name, mailId,phone, Adress, UserName, Passwrd);
 		managedeliveryboypage.clickSaveButton();
 		boolean actualAlertText = managedeliveryboypage.getResultText();
-		Assert.assertEquals(actualAlertText, true);
+		Assert.assertTrue(actualAlertText);
 
 	}
 	@Test

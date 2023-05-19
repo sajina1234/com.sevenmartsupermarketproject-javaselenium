@@ -6,10 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.sevenmartsupermarket.utilities.PageUtility;
+import com.sevenmartsupermarket.utilities.WaitUtility;
 
 public class ManageDeliveryBoyPage {
 	WebDriver driver;
 	PageUtility pageutility;
+	WaitUtility waitutility;
 	@FindBy(xpath = "//li[@class='nav-item']//p[contains(text(),'Manage Delivery Boy')]")
 	private WebElement manageDeliveryBoy;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
@@ -72,6 +74,8 @@ public void addNewDeliveryBoy(String name,String eMail,String phoneNumber,String
 public void clickSaveButton()
 {
 	pageutility=new PageUtility(driver);
+	waitutility=new WaitUtility(driver);
+	waitutility.waitForElementToBeVisible(saveButton);
 	pageutility.scrollAndClick(saveButton);
 	
 }
