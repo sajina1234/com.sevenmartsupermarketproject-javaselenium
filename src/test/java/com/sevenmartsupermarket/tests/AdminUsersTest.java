@@ -9,6 +9,7 @@ import com.sevenmartsupermarket.base.Data_Provider;
 import com.sevenmartsupermarket.constants.Constants;
 import com.sevenmartsupermarket.pages.AdminUsersPage;
 import com.sevenmartsupermarket.pages.LoginPage;
+import com.sevenmartsupermarket.utilities.FakerUtility;
 import com.sevenmartsupermarket.utilities.GeneralUtility;
 import com.sevenmartsupermarket.utilities.ScreenShot;
 
@@ -25,7 +26,7 @@ public void verifyAdminUsers() {
 	loginpage=new LoginPage(driver);
 	loginpage.loginUtility();
 	adminuserspage.clickOnAdminUsers();
-	String user="sajina"+GeneralUtility.getTimeStamp();
+	String user=FakerUtility.getRandomFullName();
 	adminuserspage.createUser(user, "admin", "Staff");
 	String actualAlertMessage=adminuserspage.getSuccessAlertMessage();
 	Assert.assertEquals(actualAlertMessage, Constants.EXPECTED_ALERT_MESSAGE);

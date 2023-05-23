@@ -38,4 +38,8 @@ public class Data_Provider {
 			{"Beautiful.jpg","https:\\grocery.com"},
 			{"slideimage.jpg","https://grocerysevenmart.com"}};
 	}
+	@DataProvider(name = "Expense data")
+	public Object[][] DataProviderexpenseCreation() {
+		return new Object[][] {{"Daily"},{"Annual"},{"Weekly"},{"Twice a day"}};
+	}
 }

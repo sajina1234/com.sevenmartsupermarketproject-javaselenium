@@ -8,6 +8,7 @@ import com.sevenmartsupermarket.base.Data_Provider;
 import com.sevenmartsupermarket.constants.Constants;
 import com.sevenmartsupermarket.pages.LoginPage;
 import com.sevenmartsupermarket.pages.ManageDeliveryBoyPage;
+import com.sevenmartsupermarket.utilities.FakerUtility;
 import com.sevenmartsupermarket.utilities.GeneralUtility;
 import com.sevenmartsupermarket.utilities.PageUtility;
 
@@ -22,8 +23,11 @@ public class ManageDeliveryBoyTest extends Base {
         managedeliveryboypage = new ManageDeliveryBoyPage(driver);
 		loginpage.loginUtility();
 		managedeliveryboypage.clickManageDeliveryBoy();
-		String Name = "sajina"+ GeneralUtility.getTimeStamp();
-		managedeliveryboypage.addNewDeliveryBoy(Name, "saj@123", "6345278765", Name, "rose", "45637");
+	    String Name=FakerUtility.getRandomFullName();
+	    String Address=FakerUtility.getRandomAddress();
+	    String UserName=FakerUtility.getRandomName();
+	    String EMail=FakerUtility.getRandomLastName()+"@gmail.com";
+		managedeliveryboypage.addNewDeliveryBoy(Name, EMail, "6345278765",Address,UserName, "45637");
 		managedeliveryboypage.clickSaveButton();
 		boolean actualAlertText = managedeliveryboypage.getResultText();
 		Assert.assertTrue(actualAlertText);
@@ -34,7 +38,8 @@ public class ManageDeliveryBoyTest extends Base {
         managedeliveryboypage = new ManageDeliveryBoyPage(driver);
 		loginpage.loginUtility();
 		managedeliveryboypage.clickManageDeliveryBoy();
-		 Name = "sajina"+ GeneralUtility.getTimeStamp();
+		 Name =FakerUtility.getRandomFullName();
+		 UserName=FakerUtility.getRandomName();
 		managedeliveryboypage.addNewDeliveryBoy(Name, mailId,phone, Adress, UserName, Passwrd);
 		managedeliveryboypage.clickSaveButton();
 		boolean actualAlertText = managedeliveryboypage.getResultText();

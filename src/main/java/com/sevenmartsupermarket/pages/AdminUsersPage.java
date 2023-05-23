@@ -14,6 +14,12 @@ public class AdminUsersPage {
 	PageUtility pageutility;
 	GeneralUtility generalutility;
 	WaitUtility waitutility;
+
+	public AdminUsersPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
 	@FindBy(xpath = "//li[@class='nav-item']//p[contains(text(),'Admin Users')] ")
 	private WebElement adminUsers;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
@@ -43,11 +49,6 @@ public class AdminUsersPage {
 	@FindBy(xpath = "//a[@class='d-block']")
 	private WebElement adminLeft;
 
-	public AdminUsersPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-	}
-
 	/**
 	 * method to click admin users
 	 */
@@ -65,7 +66,6 @@ public class AdminUsersPage {
 
 	/**
 	 * method to inputdata for username field
-	 * 
 	 * @param userName
 	 */
 	public void inputUserName(String userName) {
@@ -74,7 +74,6 @@ public class AdminUsersPage {
 
 	/**
 	 * method to input data for password field
-	 * 
 	 * @param password
 	 */
 	public void inputPassword(String password) {
@@ -83,7 +82,6 @@ public class AdminUsersPage {
 
 	/**
 	 * method to create user
-	 * 
 	 * @param usersName
 	 * @param password
 	 * @param userType
@@ -168,5 +166,4 @@ public class AdminUsersPage {
 			return false;
 	}
 
-	
 }

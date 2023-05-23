@@ -4,8 +4,28 @@
   <listeners>
     <listener class-name="com.sevenmartsupermarket.listeners.ExtentReporter"/>
   </listeners>
+  <test thread-count="5" parallel="tests" name="Run(failed)">
+    <classes>
+      <class name="com.sevenmartsupermarket.tests.ManageExpenseTest">
+        <methods>
+          <include name="launchBrowser"/>
+          <include name="launchBrowser"/>
+          <include name="terminateBrowser"/>
+          <include name="verifyexpensecategoryCreation"/>
+        </methods>
+      </class> <!-- com.sevenmartsupermarket.tests.ManageExpenseTest -->
+    </classes>
+  </test> <!-- Run(failed) -->
   <test thread-count="5" parallel="tests" name="ParellelRun(failed)">
     <classes>
+      <class name="com.sevenmartsupermarket.tests.ManagePagesTest">
+        <methods>
+          <include name="launchBrowser"/>
+          <include name="launchBrowser"/>
+          <include name="terminateBrowser"/>
+          <include name="verifySearchPages"/>
+        </methods>
+      </class> <!-- com.sevenmartsupermarket.tests.ManagePagesTest -->
       <class name="com.sevenmartsupermarket.tests.ManageUsersTest">
         <methods>
           <include name="launchBrowser"/>
@@ -15,42 +35,16 @@
           <include name="verifyUserSearch"/>
         </methods>
       </class> <!-- com.sevenmartsupermarket.tests.ManageUsersTest -->
-      <class name="com.sevenmartsupermarket.tests.ManagePagesTest">
-        <methods>
-          <include name="launchBrowser"/>
-          <include name="launchBrowser"/>
-          <include name="verifyNewPageCreation" invocation-numbers="0 1"/>
-          <include name="terminateBrowser"/>
-        </methods>
-      </class> <!-- com.sevenmartsupermarket.tests.ManagePagesTest -->
     </classes>
   </test> <!-- ParellelRun(failed) -->
   <test thread-count="5" parallel="tests" name="SmokeRun(failed)">
     <classes>
-      <class name="com.sevenmartsupermarket.tests.AdminUsersTest">
-        <methods>
-          <include name="verifyAdminUsers"/>
-          <include name="verifyUserSearch"/>
-          <include name="launchBrowser"/>
-          <include name="launchBrowser"/>
-          <include name="terminateBrowser"/>
-        </methods>
-      </class> <!-- com.sevenmartsupermarket.tests.AdminUsersTest -->
-      <class name="com.sevenmartsupermarket.tests.ManageSliderTest">
-        <methods>
-          <include name="launchBrowser"/>
-          <include name="launchBrowser"/>
-          <include name="verifyLinkStatus"/>
-          <include name="terminateBrowser"/>
-        </methods>
-      </class> <!-- com.sevenmartsupermarket.tests.ManageSliderTest -->
       <class name="com.sevenmartsupermarket.tests.ManageDeliveryBoyTest">
         <methods>
           <include name="verifyDeliveryBoyWithDataProvider" invocation-numbers="0 1"/>
           <include name="launchBrowser"/>
           <include name="launchBrowser"/>
           <include name="terminateBrowser"/>
-          <include name="verifyDeliveryBoy"/>
         </methods>
       </class> <!-- com.sevenmartsupermarket.tests.ManageDeliveryBoyTest -->
     </classes>

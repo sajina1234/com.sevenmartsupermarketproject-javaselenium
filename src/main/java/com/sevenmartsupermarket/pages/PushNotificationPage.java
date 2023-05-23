@@ -10,6 +10,11 @@ import com.sevenmartsupermarket.utilities.WaitUtility;
 public class PushNotificationPage {
 	WebDriver driver;
 
+	public PushNotificationPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
 	@FindBy(xpath = "//li[@class='nav-item']//p[contains(text(),'Push Notifications')]")
 	private WebElement pushNotification;
 	@FindBy(xpath = "//input[@id='title']")
@@ -20,48 +25,54 @@ public class PushNotificationPage {
 	private WebElement sendButton;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	private WebElement successalertMessage;
-	public PushNotificationPage(WebDriver driver) {
-		this.driver=driver;
-		PageFactory.initElements(driver, this);
-	}
+
 	/**
 	 * method to get click on pushnotification
 	 */
-public void clickPushNotification() {
-	pushNotification.click();
-}
-/**
- * method to input value to title element
- * @param title
- */
-public void inputTitleElement(String title) {
-	titleElement.sendKeys(title);
-}
-/**
- * method to input values to description element
- * @param description
- */
-public void inputDescription(String description) {
-	descriptionElement.sendKeys(description);
-}
-/**
- * method to click send button
- */
-public void clickSendButton() {
-	sendButton.click();
-}
-/**
- * method to create push notification
- * @param title
- * @param description
- */
-public void createPushNotification(String title,String description) {
-	inputTitleElement(title);
-	inputDescription(description);
-	clickSendButton();
-	
-}
-public boolean checkSuccessAlertIsDisplayed() {
-	return successalertMessage.isDisplayed();
-}
+	public void clickPushNotification() {
+		pushNotification.click();
+	}
+
+	/**
+	 * method to input value to title element
+	 * @param title
+	 */
+	public void inputTitleElement(String title) {
+		titleElement.sendKeys(title);
+	}
+
+	/**
+	 * method to input values to description element
+	 * @param description
+	 */
+	public void inputDescription(String description) {
+		descriptionElement.sendKeys(description);
+	}
+
+	/**
+	 * method to click send button
+	 */
+	public void clickSendButton() {
+		sendButton.click();
+	}
+
+	/**
+	 * method to create push notification
+	 * @param title
+	 * @param description
+	 */
+	public void createPushNotification(String title, String description) {
+		inputTitleElement(title);
+		inputDescription(description);
+		clickSendButton();
+
+	}
+
+	/**
+	 * method to check success alert message is displayed
+	 * @return
+	 */
+	public boolean checkSuccessAlertIsDisplayed() {
+		return successalertMessage.isDisplayed();
+	}
 }

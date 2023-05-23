@@ -12,6 +12,10 @@ public class ManageDeliveryBoyPage {
 	WebDriver driver;
 	PageUtility pageutility;
 	WaitUtility waitutility;
+	public ManageDeliveryBoyPage(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
 	@FindBy(xpath = "//li[@class='nav-item']//p[contains(text(),'Manage Delivery Boy')]")
 	private WebElement manageDeliveryBoy;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
@@ -40,10 +44,7 @@ public class ManageDeliveryBoyPage {
 	private WebElement search_Search;
 	@FindBy(xpath = "(//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[1])[1]")
 	private WebElement searchResult;
-	public ManageDeliveryBoyPage(WebDriver driver) {
-		this.driver=driver;
-		PageFactory.initElements(driver, this);
-	}
+	
 	/**
 	 * method to click managedeliveryboy
 	 */

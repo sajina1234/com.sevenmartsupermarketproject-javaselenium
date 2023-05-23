@@ -17,6 +17,18 @@ public class LoginPage {
 	Properties properties = new Properties();
 	FileInputStream fileinputstream;
 	GeneralUtility generalutility;
+	 public LoginPage(WebDriver driver) {
+			this.driver = driver;
+			PageFactory.initElements(driver, this);
+			try {
+				fileinputstream = new FileInputStream(Constants.CONFIG_FILE_PATH);
+				properties.load(fileinputstream);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 	@CacheLookup
 	@FindBy(xpath = "//input[@name='username']")
 	private WebElement userNameElement;
@@ -32,18 +44,7 @@ public class LoginPage {
 	@FindBy(xpath = "//h5[text()=' Alert!']")
 	private WebElement invalidLoginErrorMessage;
 	
-   public LoginPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-		try {
-			fileinputstream = new FileInputStream(Constants.CONFIG_FILE_PATH);
-			properties.load(fileinputstream);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
+  
 	/**
 	 * method to enter username
 	 * @param userName

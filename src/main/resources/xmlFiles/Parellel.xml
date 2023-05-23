@@ -16,10 +16,24 @@
 		<classes>
 			<class name="com.sevenmartsupermarket.tests.ManageUsersTest"></class>
 			<class name="com.sevenmartsupermarket.tests.PushNotificationTest"></class>
+			<class name="com.sevenmartsupermarket.tests.ManagePagesTest"></class>
+		</classes>
+	</test>
+	<test name="SanityRun">
+		<classes>
+
 			<class name="com.sevenmartsupermarket.tests.HomePageTest"></class>
 			<class name="com.sevenmartsupermarket.tests.ManageLocationTest"></class>
+		</classes>
+	</test>
+	<test name="RegressionRun">
+		<classes>
 			<class name="com.sevenmartsupermarket.tests.ManagePagesTest"></class>
-
+		</classes>
+	</test>
+	<test name="Run">
+		<classes>
+			<class name="com.sevenmartsupermarket.tests.ManageExpenseTest"></class>
 		</classes>
 	</test>
 </suite>

@@ -16,6 +16,10 @@ public class ManageSliderPage {
 	WebDriver driver;
 	PageUtility pageutility;
 	GeneralUtility generalutility;
+	public ManageSliderPage(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
 	@FindBy(xpath = "//li[@class='nav-item']//p[contains(text(),'Manage Slider')]")
 	private WebElement manageSlider;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
@@ -32,10 +36,7 @@ public class ManageSliderPage {
 	private List<WebElement> linkElements;
 	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr[1]/td[3]/a[1]")
 	private WebElement statusElement;
-	public ManageSliderPage(WebDriver driver) {
-		this.driver=driver;
-		PageFactory.initElements(driver, this);
-	}
+	
 	/**
 	 * method to get click on Mnageslider
 	 */

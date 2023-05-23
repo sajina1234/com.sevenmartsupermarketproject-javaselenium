@@ -37,10 +37,7 @@ ScreenShot screenshot=new ScreenShot();
 
 	public void intialize(String browser, String url) {
 		if (browser.equals("chrome")) {
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--remote-allow-origins=*");
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver(options);
+			driver = new ChromeDriver();
 		} else if (browser.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();

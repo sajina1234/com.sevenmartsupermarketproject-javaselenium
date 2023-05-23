@@ -16,6 +16,10 @@ public class ManageUsersPage {
 	WebDriver driver;
 	GeneralUtility generalutility;
 	PageUtility pageUtility;
+	public ManageUsersPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
 	@FindBy(xpath = "(//p[contains(text(),'Manage Users')])[1]")
 	private WebElement manageUsers;
 	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[1]")
@@ -28,10 +32,7 @@ public class ManageUsersPage {
 	private WebElement search_Search;
 	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td")
 	private WebElement searchResult;
-	public ManageUsersPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-	}
+	
 	/**
 	 * method to click ManageUsers
 	 */

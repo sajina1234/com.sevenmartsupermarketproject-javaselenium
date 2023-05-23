@@ -10,6 +10,10 @@ import com.sevenmartsupermarket.utilities.PageUtility;
 public class ManagePagesPage {
 	WebDriver driver;
 	PageUtility pageutility;
+	public ManagePagesPage(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
 	@FindBy(xpath = "//li[@class='nav-item has-treeview']//p[contains(text(),'Manage Content')]")
 	private WebElement manageContent;
 	@FindBy(xpath = "//p[contains(text(),'Manage Pages')]")
@@ -36,37 +40,68 @@ public class ManagePagesPage {
 	private WebElement searchElement;
 	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr[1]/td[1]")
 	private WebElement pageSearchResult;
-	public ManagePagesPage(WebDriver driver) {
-		this.driver=driver;
-		PageFactory.initElements(driver, this);
-	}
 	
+	/**
+	 * method to click on managecontent
+	 */
 public void clickManageContent() {
 	manageContent.click();
 }
+/**
+ * method to click manage pages
+ */
 public void clickManagePages() {
 	managePages.click();
 }
+/**
+ * method to click new button
+ */
 public void clickNewButton() {
 	newButton.click();
 }
+/**
+ * method to input title element
+ * @param title
+ */
 public void inputTitle(String title) {
 	 titleElement.sendKeys(title);
 }
+/**
+ * method to input description
+ * @param description
+ */
 public void inputDescription(String description) {
 	descriptionElement.sendKeys(description);
 }
+/**
+ * method to input page name
+ * @param pageName
+ */
 public void inputPageName(String pageName) {
 	pagenameElement.sendKeys(pageName);
 	}
+/**
+ * method to upload image content
+ * @param imageName
+ */
 public void uploadPageContentImage(String imageName) {
 	pageutility=new PageUtility(driver);
 	pageutility.fileUpload(uploadElement, imageName);
 	}
+/**
+ * method to click on save button
+ */
 public void clickSaveButton() {
 	pageutility=new PageUtility(driver);
 	pageutility.scrollAndClick(saveButton);
 }
+/**
+ * method to create page content
+ * @param title
+ * @param description
+ * @param pageName
+ * @param imageName
+ */
 public void addPageContent(String title,String description,String pageName,String imageName) {
 	clickNewButton();
 	inputTitle(title);
@@ -75,20 +110,39 @@ public void addPageContent(String title,String description,String pageName,Strin
 	uploadPageContentImage(imageName);
 	clickSaveButton();
 }
+/**
+ * method to check success alert message
+ * @return
+ */
 public boolean checkAlertMessageIsDisplayed() {
 	return alertMessage.isDisplayed();
 }
+/**
+ * method to click on search button
+ */
 public void clickSearchbutton() {
 	searchButton.click();
 }
+/**
+ * method to input search element
+ * @param pageTitle
+ */
 public void inputSearchTitle(String pageTitle) {
 	searchTitleElement.sendKeys(pageTitle);
 }
+/**
+ * method to search content
+ * @param pageTitle
+ */
 public void searchPageContent(String pageTitle) {
 	clickSearchbutton();
 	inputSearchTitle(pageTitle);
 	searchElement.click();
 }
+/**
+ * method to get serach result
+ * @return
+ */
 public String getPageSearchResult() {
 	return pageSearchResult.getText();
 	}

@@ -22,7 +22,7 @@ public class ManageUsersTest extends Base {
 		Assert.assertEquals(actualStatus, Constants.EXPECTED_STATUS);
 		
 	}
-	@Test
+	@Test(retryAnalyzer = com.sevenmartsupermarket.listeners.RetryAnalyser.class)
 	public void verifyUserSearch() {
 		manageuserspage=new ManageUsersPage(driver);
 		loginpage=new LoginPage(driver);

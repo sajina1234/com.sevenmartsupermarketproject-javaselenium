@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
@@ -24,6 +25,7 @@ public class GeneralUtility {
 
 	/**
 	 * method to get text of the element
+	 * 
 	 * @param element
 	 * @return string
 	 */
@@ -34,6 +36,7 @@ public class GeneralUtility {
 
 	/**
 	 * method to get text of list of elements
+	 * 
 	 * @param listOfElements
 	 * @return list<string>
 	 */
@@ -47,7 +50,8 @@ public class GeneralUtility {
 	}
 
 	/**
-	 * method to check element is displayed 
+	 * method to check element is displayed
+	 * 
 	 * @param element
 	 * @return boolean
 	 */
@@ -57,6 +61,7 @@ public class GeneralUtility {
 
 	/**
 	 * method to check element is enabled
+	 * 
 	 * @param element
 	 * @return boolean
 	 */
@@ -66,6 +71,7 @@ public class GeneralUtility {
 
 	/**
 	 * method to check element is selected
+	 * 
 	 * @param element
 	 * @return boolean
 	 */
@@ -76,6 +82,7 @@ public class GeneralUtility {
 
 	/**
 	 * method to get attribute of the element
+	 * 
 	 * @param element
 	 * @param attributeName
 	 * @return
@@ -87,6 +94,7 @@ public class GeneralUtility {
 
 	/**
 	 * method to get css properties of element
+	 * 
 	 * @param element
 	 * @param cssValue
 	 * @return
@@ -99,43 +107,67 @@ public class GeneralUtility {
 	 * method to switch window
 	 */
 	public void switch_Window(String windowid) {
-		 driver.switchTo().window(windowid);
-		}
+		driver.switchTo().window(windowid);
+	}
+
 	/**
 	 * method for file uploading
+	 * 
 	 * @param element
 	 * @param fileName
 	 */
 	public void fileUpload(WebElement element, String fileName) {
-		File fileupload = new File(Constants.IMAGE_DIRECTORY+fileName+".jpeg");
+		File fileupload = new File(Constants.IMAGE_DIRECTORY + fileName + ".jpeg");
 		element.sendKeys(fileupload.getAbsolutePath());
-		
+
 	}
+
 	/**
-	 * method  to get time stamp
+	 * method to get time stamp
+	 * 
 	 * @return
 	 */
 	public static String getTimeStamp() {
 		return new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(new Date());
 	}
+
 	/**
-	 * method to get response code 
+	 * method to get response code
+	 * 
 	 * @param url
 	 * @return
 	 */
 	public int getResponseStatusCode(String url) {
-		int responseCode=0;
+		int responseCode = 0;
 		HttpURLConnection huc = null;
 		try {
-			huc = (HttpURLConnection)(new URL(url).openConnection());
+			huc = (HttpURLConnection) (new URL(url).openConnection());
 			huc.setRequestMethod("HEAD");
 
 			huc.connect();
-			responseCode=huc.getResponseCode();
-		
+			responseCode = huc.getResponseCode();
+
 		} catch (Exception e) {
-		
+
 		}
 		return responseCode;
 	}
+	/**
+	 * method to generate random numbers
+	 * @return
+	 */
+	public static int getRandomNumbers() {
+		Random randomGenerator = new Random();
+        int number=0;
+        for(int i=1;i<=10;i++) {
+        	number=randomGenerator.nextInt(6);
+        	
+        }
+        return number;
+	}
+
+	
 }
+	
+
+		
