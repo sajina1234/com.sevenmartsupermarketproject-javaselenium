@@ -36,13 +36,13 @@ public class ManageLocationPage {
 	/**method to click on manage location
 	 */
 public void clickManageLocation() {
-	manageLocation.click();
+	PageUtility.element_Click(manageLocation);
 }
 /**
  * method to click new button
  */
 public void clickNewButton() {
-	newButton.click();
+	PageUtility.element_Click(newButton);
 }
 /**
  * method to input country field
@@ -50,7 +50,7 @@ public void clickNewButton() {
  */
 public void inputCountry(int index) {
 	pageutility=new PageUtility(driver);
-	countryElement.click();
+	PageUtility.element_Click(countryElement);
 	pageutility.select_ByIndex(index, countryElement);;
 	
 }
@@ -60,7 +60,7 @@ public void inputCountry(int index) {
  */
 public void inputState(String text) {
 	pageutility=new PageUtility(driver);
-	stateElement.click();
+	PageUtility.element_Click(stateElement);
 	pageutility.select_ByVisibleText(text, stateElement);
 	
 }
@@ -69,21 +69,20 @@ public void inputState(String text) {
  * @param location
  */
 public void inputLocation(String location) {
-	locationElement.sendKeys(location);
-	
-}
+	PageUtility.element_SendKeys(locationElement, location);
+	}
 /**
  * method to input delivery charge
  * @param charge
  */
 public void InputDeliveryCharge(String charge) {
-	deliveryChargeElement.sendKeys(charge);
-}
+	PageUtility.element_SendKeys(deliveryChargeElement, charge);
+	}
 /**
  * method to click on save button
  */
 public void clickSavebutton() {
-	saveButton.click();
+	PageUtility.element_Click(saveButton);
 }
 /**
  * method to create location

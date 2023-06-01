@@ -18,8 +18,24 @@ public class PageUtility {
 	}
 
 	/**
+	 * method to click elements
+	 * @param element
+	 */
+	public static void element_Click(WebElement element) {
+		element.click();
+	}
+
+	/**
+	 * method to input values to the element
+	 * @param element
+	 * @param value
+	 */
+	public static void element_SendKeys(WebElement element, String value) {
+		element.sendKeys(value);
+	}
+
+	/**
 	 * method to select element by index
-	 * 
 	 * @param index
 	 * @param element
 	 */
@@ -30,7 +46,6 @@ public class PageUtility {
 
 	/**
 	 * method to select element by value
-	 * 
 	 * @param value
 	 * @param element
 	 */
@@ -41,7 +56,6 @@ public class PageUtility {
 
 	/**
 	 * method to select element by visible text
-	 * 
 	 * @param text
 	 * @param element
 	 */
@@ -52,7 +66,6 @@ public class PageUtility {
 
 	/**
 	 * method to mouse over the element
-	 * 
 	 * @param element
 	 */
 	public void action_MoveToElement(WebElement element) {
@@ -62,7 +75,6 @@ public class PageUtility {
 
 	/**
 	 * method to double click the element
-	 * 
 	 * @param element
 	 */
 	public void action_DoubleClick(WebElement element) {
@@ -72,7 +84,6 @@ public class PageUtility {
 
 	/**
 	 * method to drag and drop the element
-	 * 
 	 * @param source
 	 * @param target
 	 */
@@ -83,7 +94,6 @@ public class PageUtility {
 
 	/**
 	 * method to right click the element
-	 * 
 	 * @param element
 	 */
 	public void action_RightClick(WebElement element) {
@@ -93,7 +103,6 @@ public class PageUtility {
 
 	/**
 	 * method to scroll into element
-	 * 
 	 * @param element
 	 */
 	public void scroll_into_view(WebElement element) {
@@ -103,7 +112,6 @@ public class PageUtility {
 
 	/**
 	 * method to click element by using javascriptexecutor
-	 * 
 	 * @param element
 	 */
 	public void click_JavascriptExecutor(WebElement element) {
@@ -127,7 +135,6 @@ public class PageUtility {
 
 	/**
 	 * method to get alertmessage
-	 * 
 	 * @return
 	 */
 	public String get_AlertMessage() {
@@ -137,7 +144,6 @@ public class PageUtility {
 
 	/**
 	 * method to send alerttext
-	 * 
 	 * @param value
 	 */
 	public void sendAlertText(String value) {
@@ -168,6 +174,7 @@ public class PageUtility {
 
 	/**
 	 * method for file uploading
+	 * 
 	 * @param element
 	 * @param fileName
 	 */
@@ -180,5 +187,5 @@ public class PageUtility {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

@@ -45,40 +45,40 @@ public class ManagePagesPage {
 	 * method to click on managecontent
 	 */
 public void clickManageContent() {
-	manageContent.click();
+	PageUtility.element_Click(manageContent);
 }
 /**
  * method to click manage pages
  */
 public void clickManagePages() {
-	managePages.click();
+	PageUtility.element_Click(managePages);
 }
 /**
  * method to click new button
  */
 public void clickNewButton() {
-	newButton.click();
+	PageUtility.element_Click(newButton);
 }
 /**
  * method to input title element
  * @param title
  */
 public void inputTitle(String title) {
-	 titleElement.sendKeys(title);
+	PageUtility.element_SendKeys(titleElement, title);
 }
 /**
  * method to input description
  * @param description
  */
 public void inputDescription(String description) {
-	descriptionElement.sendKeys(description);
+	PageUtility.element_SendKeys(descriptionElement, description);
 }
 /**
  * method to input page name
  * @param pageName
  */
 public void inputPageName(String pageName) {
-	pagenameElement.sendKeys(pageName);
+	PageUtility.element_SendKeys(pagenameElement, pageName);
 	}
 /**
  * method to upload image content
@@ -121,15 +121,15 @@ public boolean checkAlertMessageIsDisplayed() {
  * method to click on search button
  */
 public void clickSearchbutton() {
-	searchButton.click();
-}
+	PageUtility.element_Click(searchButton);
+	}
 /**
  * method to input search element
  * @param pageTitle
  */
 public void inputSearchTitle(String pageTitle) {
-	searchTitleElement.sendKeys(pageTitle);
-}
+	PageUtility.element_SendKeys(searchTitleElement, pageTitle);
+	}
 /**
  * method to search content
  * @param pageTitle

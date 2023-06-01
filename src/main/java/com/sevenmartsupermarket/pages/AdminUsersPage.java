@@ -53,15 +53,16 @@ public class AdminUsersPage {
 	 * method to click admin users
 	 */
 	public void clickOnAdminUsers() {
-
-		adminUsers.click();
+PageUtility.element_Click(adminUsers);
+		
 	}
 
 	/**
 	 * method to get click new button
 	 */
 	public void clickOnNewButton() {
-		newButton.click();
+		PageUtility.element_Click(newButton);
+		
 	}
 
 	/**
@@ -69,6 +70,7 @@ public class AdminUsersPage {
 	 * @param userName
 	 */
 	public void inputUserName(String userName) {
+		PageUtility.element_SendKeys(userNameElement,userName);
 		userNameElement.sendKeys(userName);
 	}
 
@@ -77,6 +79,7 @@ public class AdminUsersPage {
 	 * @param password
 	 */
 	public void inputPassword(String password) {
+		PageUtility.element_SendKeys(passwordElement,password);
 		passwordElement.sendKeys(password);
 	}
 
@@ -101,7 +104,8 @@ public class AdminUsersPage {
 	public void clickOnSaveButton() {
 		waitutility = new WaitUtility(driver);
 		waitutility.waitForElementToBeClickable(saveButton);
-		saveButton.click();
+		PageUtility.element_Click(saveButton);
+		
 	}
 
 	/**
@@ -116,7 +120,8 @@ public class AdminUsersPage {
 	 * method to click search button
 	 */
 	public void clickSearchButton() {
-		searchButton.click();
+		PageUtility.element_Click(searchButton);
+		
 	}
 
 	/**
@@ -125,14 +130,16 @@ public class AdminUsersPage {
 	 * @return
 	 */
 	public void inputSearchUsers(String username) {
-		searchUserNameElement.sendKeys(username);
+		PageUtility.element_SendKeys(searchUserNameElement, username);
+		
 	}
 
 	/**
 	 * method to click searchElement
 	 */
 	public void clickSearchElement() {
-		searchField.click();
+		PageUtility.element_Click(searchField);
+	
 	}
 
 	/**
@@ -151,7 +158,8 @@ public class AdminUsersPage {
 		waitutility = new WaitUtility(driver);
 		adminRight.click();
 		waitutility.waitForElementToBeVisible(logoutElement);
-		logoutElement.click();
+		PageUtility.element_Click(logoutElement);
+	
 	}
 
 	/**

@@ -18,7 +18,7 @@ public void verifyPushNotification() {
 	pushnotificationpage=new PushNotificationPage(driver);
 	loginpage.loginUtility();
 	pushnotificationpage.clickPushNotification();
-	excelreader.setExcelFile("pushnotificationdata","notificationdata");
+	excelreader.setExcelFile("project test data","Sheet4");
 	String title=excelreader.getCellData(0, 0);
 	String description=excelreader.getCellData(0, 1);
 	pushnotificationpage.createPushNotification(title, description);

@@ -37,7 +37,7 @@ public class ManageUsersPage {
 	 * method to click ManageUsers
 	 */
 public void clickManageUsers() {
-	manageUsers.click();
+	PageUtility.element_Click(manageUsers);
 }
 /**
  * method for status DeActivation of users
@@ -57,7 +57,6 @@ public void clickOnDeActivationButton(String name) {
 	}
 	WebElement deActivateButton=driver.findElement(By.xpath("//table[@class='table table-bordered table-hover table-sm']/tbody/tr["+i+"]/td[6]/a[1]"));
 	pageUtility.scrollAndClick(deActivateButton);
-	deActivateButton.click();
 }
 /**
  * 	method to get user status
@@ -98,19 +97,17 @@ public void deleteUser(String name) {
 	WebElement deleteButton=driver.findElement(By.xpath("//table[@class='table table-bordered table-hover table-sm']/tbody/tr["+i+"]/td[6]/a[2]"));
 	pageUtility.scrollAndClick(deleteButton);
 	pageUtility.alert_Accept();
-	deleteButton.click();
-	
+	PageUtility.element_Click(deleteButton);
 }
 /**
  * method to search user
  * @param user
  */
 public void searchUser(String user) {
-	searchButton.click();
-	search_UserName.sendKeys(user);
-	search_Search.click();
-	
-}
+	PageUtility.element_Click(searchButton);
+PageUtility.element_SendKeys(search_UserName, user);
+	PageUtility.element_Click(search_Search);
+	}
 /**
  * method to get search result
  * @return

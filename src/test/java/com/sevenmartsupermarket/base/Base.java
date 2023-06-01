@@ -25,13 +25,14 @@ public class Base {
 	Properties properties = new Properties();
 	FileInputStream fileinputstream;
 ScreenShot screenshot=new ScreenShot();
-	public Base() {
+	public Base()  {
 		try {
 			fileinputstream=new FileInputStream(Constants.CONFIG_FILE_PATH);
 			properties.load(fileinputstream);
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("an error in config file path");
 		}
 	}
 

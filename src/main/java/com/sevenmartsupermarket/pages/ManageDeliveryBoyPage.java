@@ -12,10 +12,12 @@ public class ManageDeliveryBoyPage {
 	WebDriver driver;
 	PageUtility pageutility;
 	WaitUtility waitutility;
+
 	public ManageDeliveryBoyPage(WebDriver driver) {
-		this.driver=driver;
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+
 	@FindBy(xpath = "//li[@class='nav-item']//p[contains(text(),'Manage Delivery Boy')]")
 	private WebElement manageDeliveryBoy;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
@@ -44,69 +46,73 @@ public class ManageDeliveryBoyPage {
 	private WebElement search_Search;
 	@FindBy(xpath = "(//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[1])[1]")
 	private WebElement searchResult;
-	
+
 	/**
 	 * method to click managedeliveryboy
 	 */
-public void clickManageDeliveryBoy() {
-	manageDeliveryBoy.click();
-}
-/**
- * method to add new delivery boy
- * @param name
- * @param eMail
- * @param phoneNumber
- * @param address
- * @param userName
- * @param password
- */
-public void addNewDeliveryBoy(String name,String eMail,String phoneNumber,String address,String userName,String password) {
-	newButton.click();
-	nameField.sendKeys(name);
-	emailField.sendKeys(eMail);
-	phonenumberField.sendKeys(phoneNumber);
-	addressField.sendKeys(address);
-	userNameField.sendKeys(userName);
-	passwordField.sendKeys(password);
-}
-/**
- * method to  scrollandclick save button
- */
-public void clickSaveButton()
-{
-	pageutility=new PageUtility(driver);
-	waitutility=new WaitUtility(driver);
-	waitutility.waitForElementToBeVisible(saveButton);
-	pageutility.scrollAndClick(saveButton);
-	
-}
-/**
- * method to get success alert text  
- * @return boolean
- */
-public boolean getResultText() {
-	String deliveryBoyCreationAlertResult = deliveryBoyCreationAlert.getText();
-	if (deliveryBoyCreationAlertResult.contains("Delivery Boy Details Created Successfully"))
-		return true;
+	public void clickManageDeliveryBoy() {
+		PageUtility.element_Click(manageDeliveryBoy);
+	}
 
-	else
-		return false;
+	/**
+	 * method to add new delivery boy
+	 * @param name
+	 * @param eMail
+	 * @param phoneNumber
+	 * @param address
+	 * @param userName
+	 * @param password
+	 */
+	public void addNewDeliveryBoy(String name, String eMail, String phoneNumber, String address, String userName,
+			String password) {
+		PageUtility.element_Click(newButton);
+		PageUtility.element_SendKeys(nameField, name);
+		PageUtility.element_SendKeys(emailField, eMail);
+		PageUtility.element_SendKeys(phonenumberField, phoneNumber);
+		PageUtility.element_SendKeys(addressField, address);
+		PageUtility.element_SendKeys(userNameField, userName);
+		PageUtility.element_SendKeys(passwordField, password);
+	}
 
-}
-/**
- * method to search delivery boy
- */
-public void searchDeliveryBoy(String deliveryBoyName) {
-	searchButton.click();
-	search_Name.sendKeys(deliveryBoyName);
-	search_Search.click();
-	
-}
-/**
- * method to get search result of delivery boy
- * @return
- */
-public String getDeliveryBoySearchResult() {
-	return searchResult.getText();
-}
+	/**
+	 * method to scrollandclick save button
+	 */
+	public void clickSaveButton() {
+		pageutility = new PageUtility(driver);
+		waitutility = new WaitUtility(driver);
+		waitutility.waitForElementToBeVisible(saveButton);
+		pageutility.scrollAndClick(saveButton);
+
+	}
+
+	/**
+	 * method to get success alert text
+	 * @return boolean
+	 */
+	public boolean getResultText() {
+		String deliveryBoyCreationAlertResult = deliveryBoyCreationAlert.getText();
+		if (deliveryBoyCreationAlertResult.contains("Delivery Boy Details Created Successfully"))
+			return true;
+
+		else
+			return false;
+
+	}
+
+	/**
+	 * method to search delivery boy
+	 */
+	public void searchDeliveryBoy(String deliveryBoyName) {
+		PageUtility.element_Click(searchButton);
+		PageUtility.element_SendKeys(search_Name, deliveryBoyName);
+		PageUtility.element_Click(search_Search);
+	}
+
+	/**
+	 * method to get search result of delivery boy
+	 * @return
+	 */
+	public String getDeliveryBoySearchResult() {
+		return searchResult.getText();
+	}
 }

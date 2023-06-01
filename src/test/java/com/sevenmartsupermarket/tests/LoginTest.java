@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.sevenmartsupermarket.base.Base;
-import com.sevenmartsupermarket.base.Data_Provider;
+import com.sevenmartsupermarket.dataprovider.*;
 import com.sevenmartsupermarket.constants.Constants;
 import com.sevenmartsupermarket.pages.LoginPage;
 import com.sevenmartsupermarket.utilities.ExcelReader;
@@ -39,7 +39,7 @@ public class LoginTest extends Base {
 	public void verifyInvalidLoginErrorMessage() {
 		loginpage = new LoginPage(driver);
 		excelreader=new ExcelReader();
-		excelreader.setExcelFile("logindata","invalidlogincredentials");
+		excelreader.setExcelFile("project test data","Sheet2");
 		String userName=excelreader.getCellData(0, 0);
 		String password=excelreader.getCellData(0, 1);
 		loginpage.loginUtility(userName, password);

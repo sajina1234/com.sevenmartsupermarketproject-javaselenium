@@ -11,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.sevenmartsupermarket.constants.Constants;
 import com.sevenmartsupermarket.utilities.GeneralUtility;
+import com.sevenmartsupermarket.utilities.PageUtility;
 
 public class LoginPage {
 	WebDriver driver;
@@ -50,7 +51,7 @@ public class LoginPage {
 	 * @param userName
 	 */
 	public void enterUserName(String userName) {
-		userNameElement.sendKeys(userName);
+		PageUtility.element_SendKeys(userNameElement, userName);
 	}
 
 	/**
@@ -58,15 +59,15 @@ public class LoginPage {
 	 * @param password
 	 */
 	public void enterPassword(String password) {
-		passwordElement.sendKeys(password);
+		PageUtility.element_SendKeys(passwordElement, password);
 	}
 
 	/**
 	 * method to click signin button
 	 */
 	public void clickSignInButton() {
-		signInButton.click();
-	}
+		PageUtility.element_Click(signInButton);
+		}
 
 	/**
 	 * method for login

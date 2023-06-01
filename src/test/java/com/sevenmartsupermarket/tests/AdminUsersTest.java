@@ -5,10 +5,11 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.sevenmartsupermarket.base.Base;
-import com.sevenmartsupermarket.base.Data_Provider;
+import com.sevenmartsupermarket.dataprovider.*;
 import com.sevenmartsupermarket.constants.Constants;
 import com.sevenmartsupermarket.pages.AdminUsersPage;
 import com.sevenmartsupermarket.pages.LoginPage;
+import com.sevenmartsupermarket.utilities.ExcelReader;
 import com.sevenmartsupermarket.utilities.FakerUtility;
 import com.sevenmartsupermarket.utilities.GeneralUtility;
 import com.sevenmartsupermarket.utilities.ScreenShot;
@@ -18,16 +19,20 @@ import com.sevenmartsupermarket.utilities.ScreenShot;
 public class AdminUsersTest extends Base{
 	LoginPage loginpage;
 	AdminUsersPage adminuserspage;
-	
+	ExcelReader excelreader;
 
 @Test(groups = {"sanity","smoke"})
 public void verifyAdminUsers() {
 	adminuserspage=new AdminUsersPage(driver);
 	loginpage=new LoginPage(driver);
 	loginpage.loginUtility();
+	excelreader=new ExcelReader();
 	adminuserspage.clickOnAdminUsers();
+	excelreader.setExcelFile("project test data","Sheet10");
+	String designation=excelreader.getCellData(0, 1);
+	String type=excelreader.getCellData(0, 2);
 	String user=FakerUtility.getRandomFullName();
-	adminuserspage.createUser(user, "admin", "Staff");
+	adminuserspage.createUser(user,designation,type);
 	String actualAlertMessage=adminuserspage.getSuccessAlertMessage();
 	Assert.assertEquals(actualAlertMessage, Constants.EXPECTED_ALERT_MESSAGE);
 }
@@ -35,10 +40,13 @@ public void verifyAdminUsers() {
 public void verifyUserSearch() {
 	adminuserspage=new AdminUsersPage(driver);
 	loginpage=new LoginPage(driver);
+	excelreader=new ExcelReader();
 	loginpage.loginUtility();
 	adminuserspage.clickOnAdminUsers();
 	adminuserspage.clickSearchButton();
-	adminuserspage.inputSearchUsers("pf");
+	excelreader.setExcelFile("project test data","Sheet9");
+	String search=excelreader.getCellData(0, 0);
+	adminuserspage.inputSearchUsers(search);
 	adminuserspage.clickSearchElement();
 	String actualSearchResult=adminuserspage.getSearchresult();
 	Assert.assertEquals(actualSearchResult, Constants.EXPECTED_SEARCH_RESULT);

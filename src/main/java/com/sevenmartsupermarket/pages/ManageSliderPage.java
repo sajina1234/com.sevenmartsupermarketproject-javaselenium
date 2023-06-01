@@ -41,20 +41,20 @@ public class ManageSliderPage {
 	 * method to get click on Mnageslider
 	 */
 	public void clickManageSlider() {
-		manageSlider.click();
-	}
+		PageUtility.element_Click(manageSlider);
+		}
 	/**
 	 * method to click on  New button
 	 */
 	public void clickNewButton() {
-		newButton.click();
+		PageUtility.element_Click(newButton);
 	}
 	/**
 	 * method to input for linkElement
 	 * @param linkName
 	 */
 public void inputLinkElement(String linkName) {
-	linkElement.sendKeys(linkName);
+	PageUtility.element_SendKeys(linkElement, linkName);
 }
 /**
  * method to upload image
@@ -68,7 +68,7 @@ public void uploadImage(String imageName) {
  * method to click save button
  */
 public void clicksaveButton() {
-	saveButton.click();
+	PageUtility.element_Click(saveButton);
 }
 /**
  * method to add pageSliders

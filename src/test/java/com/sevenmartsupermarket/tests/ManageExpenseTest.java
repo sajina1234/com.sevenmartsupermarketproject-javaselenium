@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.sevenmartsupermarket.base.Base;
-import com.sevenmartsupermarket.base.Data_Provider;
+import com.sevenmartsupermarket.dataprovider.*;
 import com.sevenmartsupermarket.pages.LoginPage;
 import com.sevenmartsupermarket.pages.ManageExpensePage;
 import com.sevenmartsupermarket.utilities.FakerUtility;

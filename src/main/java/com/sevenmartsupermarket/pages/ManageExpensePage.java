@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.sevenmartsupermarket.utilities.PageUtility;
+
 public class ManageExpensePage {
 	WebDriver driver;
 	public ManageExpensePage(WebDriver driver) {
@@ -27,34 +29,33 @@ private WebElement SuccessAlert;
  * method to click on manageexpense
  */
 public void clickOnManageExpense() {
-	manageExpense.click();
-	
-}
+	PageUtility.element_Click(manageExpense);
+	}
 /**
  * method to click on expensecategory
  */
 public void clickonExpenseCategory() {
-	expenseCategory.click();
-}
+	PageUtility.element_Click(expenseCategory);
+	}
 /**
  * method to click on new button
  */
 public void clickOnNewButton() {
-	newButton.click();
-}
+	PageUtility.element_Click(newButton);
+	}
 /**
  * method to input title element
  * @param title
  */
 public void inputExpenseTitle(String title) {
-	titleElement.sendKeys(title);
+	PageUtility.element_SendKeys(titleElement, title);
 }
 /**
  * method to click on save button
  */
 public void clickOnSaveButton() {
-	savebutton.click();
-}
+	PageUtility.element_Click(savebutton);
+	}
 /**
  * method to create expense category
  * @param title
