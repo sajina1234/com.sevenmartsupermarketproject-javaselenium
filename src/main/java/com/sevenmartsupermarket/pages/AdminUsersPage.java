@@ -94,6 +94,7 @@ PageUtility.element_Click(adminUsers);
 		clickOnNewButton();
 		inputUserName(usersName);
 		inputPassword(password);
+		System.out.println(password);
 		pageutility.select_ByVisibleText(userType, userTypeElement);
 		clickOnSaveButton();
 	}
